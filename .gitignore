@@ -1,0 +1,13 @@
+# Google API credentials
+credentials.json
+
+# Virtual environment
+venv/
+__pycache__/
+
+# Local data files
+*.csv
+*.txt
+
+# Log files
+*.log
