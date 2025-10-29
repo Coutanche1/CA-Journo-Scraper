@@ -4,7 +4,7 @@ import quickemailverification
 import time
 from datetime import datetime
 import signal
-import os # <-- FIX: This import was missing
+import os
 import sheets_client
 
 # --- HELPER FUNCTION ---
