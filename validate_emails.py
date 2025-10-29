@@ -106,13 +106,16 @@ def main():
     # --- GOOGLE SHEETS SYNC ---
     if validated_rows:
         log("\nConnecting to Google Sheets to sync newly validated journalists...")
-            client = sheets_client.GoogleSheetsClient()
-            master_ws = client.get_worksheet("master_list")        
+
+    client = sheets_client.GoogleSheetsClient()
+
+    master_ws = client.get_worksheet("master_list")
+    
     if master_ws:
-            try:
-                log(f"Uploading {len(validated_rows)} new rows to 'master_list' sheet...")
-                master_ws.append_rows(validated_rows)
-                log("Google Sheets sync successful.")
+        try:
+            log(f"Uploading {len(validated_rows)} new rows to 'master_list' sheet...")
+            master_ws.append_rows(validated_rows, value_input_option='USER_ENTERED')
+            log("Google Sheets sync successful.")
             except Exception as e:
                 log(f"Google Sheets sync failed: {e}")
         else:
